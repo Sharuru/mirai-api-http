@@ -19,6 +19,7 @@ import net.mamoe.mirai.utils.MiraiExperimentalApi
 internal suspend fun MessageEvent.toDTO() = when (this) {
     is FriendMessageEvent -> FriendMessagePacketDTO(QQDTO(sender))
     is GroupMessageEvent -> GroupMessagePacketDTO(MemberDTO(sender))
+    is GroupMessageSyncEvent -> GroupMessagePacketDTO(MemberDTO(sender))
     is GroupTempMessageEvent -> TempMessagePacketDTO(MemberDTO(sender))
     is StrangerMessageEvent -> StrangerMessagePacketDTO(QQDTO(sender))
     is OtherClientMessageEvent -> OtherClientMessagePacketDTO(OtherClientDTO(subject))
